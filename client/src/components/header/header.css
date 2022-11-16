@@ -1,0 +1,24 @@
+.custom-nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.abc{
+    background-color: rgb(141, 33, 169);
+    
+}
+.header-logo{
+    border-radius: 20%;
+    padding: 0.2rem;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+    background-color: beige transparent;
+    border: 1px solid black;
+    justify-content: center;
+}
