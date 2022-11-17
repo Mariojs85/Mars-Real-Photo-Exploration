@@ -8,15 +8,20 @@ allRovers.forEach((element) => {
   rover.push(element);
 });
 
-
-
 const getPhotos = async () => {
-  const res = await fetch(
-    `https://api.nasa.gov/mars-photos/api/v1//manifests/Curiosity?api_key=hUkkfpMaQjV6dDNHBwxX2Q7nYd0R8Te9hR0o0z6l`
-  );
-  const data = await res.json();
-  console.log(data);
-  return data;
+  try {
+    const res = await fetch(
+      `https://api.nasa.gov/mars-photos/api/v1//manifests/Curiosity?api_key=hUkkfpMaQjV6dDNHBwxX2Q7nYd0R8Te9hR0o0z6l`
+    );
+    if (!res.ok) {
+      throw new Error(`Error! status: ${res.status}`);
+    }
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export { getPhotos };

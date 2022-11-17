@@ -11,7 +11,10 @@ const Home = () => {
   useEffect(() => {
     getPhotos()
       .then((res) => {
-        console.log(res);
+       const arr =Object.values(res) 
+       
+        console.log(arr);
+        
       })
       .catch((err) => console.log(err));
   }, []);
