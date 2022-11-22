@@ -15,6 +15,7 @@ function App() {
           <hr style={{ borderColor: "white" }} />
           <Routes>
             <Route index path="/" element={<Home />} />
+            <Route path="/roverPhoto" element={<Roverphoto />} />
             <Route path="/roverPhoto/:rover" element={<Roverphoto />} />
             <Route path="specials" element={<Specials />} />
           </Routes>

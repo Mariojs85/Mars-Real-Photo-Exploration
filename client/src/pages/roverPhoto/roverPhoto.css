@@ -1,15 +1,8 @@
-.abc{
-    
+.abc {
     justify-content: space-around;
     justify-items: center;
     align-items: center;
-
-    /* max-width: 65rem; */
-    /* text-align:center; */
-    border: solid 2 px rgb(215, 12, 12);
     height: max-content;
     background-color: rgb(108, 108, 143);
-
-
-
-}
+  }
+  

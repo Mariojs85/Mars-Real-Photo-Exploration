@@ -1,7 +1,8 @@
 const bullet = "\u2022";
 const bulletWithSpace = `${bullet} `;
 const persevaranceTimer = (
-  <iframe title="a"
+  <iframe
+    title="a"
     src="https://free.timeanddate.com/countdown/i8l3auvn/cf11/cm0/cu4/ct4/cs0/ca0/cr0/ss0/cacf90/cpcfff/pct/tc66c/fs110/szw256/szh108/tacff0/tptLive%20Mission/tpcff0/macff0/mpcfff/iso2020-07-30T11:50:00/pl4/pr4/pt3/pb4"
     allowtransparency="true"
     frameBorder="0"
@@ -12,7 +13,7 @@ const persevaranceTimer = (
 const missionTimer = (
   //  <script>(function(d, s, id) { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//www.tickcounter.com/static/js/loader.js"; pjs.parentNode.insertBefore(js, pjs); }(document, "script", "tickcounter-sdk"));</script><a data-type="countup" data-id="270492" class="tickcounter" style="display: block; width: 100%; position: relative; padding-bottom: 25%" title="Countup" href="//www.tickcounter.com/countup">Countup</a>
   <iframe
-  title="b"
+    title="b"
     src="https://free.timeanddate.com/countdown/i8l3auvn/cf11/cm0/cu4/ct4/cs0/ca0/cr0/ss0/cacf90/cpcfff/pct/tc66c/fs110/szw256/szh108/tacff0/tptLive%20Mission/tpcff0/macff0/mpcfff/iso2011-11-26T15:02:00/pl4/pr4/pt3/pb4"
     allowtransparency="true"
     frameBorder="0"
@@ -28,7 +29,6 @@ export const rovers = [
       "Mission Completed\nJun. 10, 2003 — May. 25, 2011\n07 YRS 11 MOS\n13 DAYS 06 HRS 01 MINS 13 SECS",
     description: `${bulletWithSpace}Spirit uncovered strong evidence that Mars was once much wetter than it is now.\n\n${bulletWithSpace}It operated for 6 years, 2 months, and 19 days, more than 25 times its original intended lifetime.\n\n${bulletWithSpace}The rover traveled 4.8 miles (7.73 kilometers) across the Martian plains.\n\n${bulletWithSpace}On May 25, 2011, NASA ended efforts to contact the marooned rover and declared its mission complete. \n\n${bulletWithSpace}The rover had been silent since March 2010`,
   },
-
   {
     name: "Opportunity",
     img: "/Photos/edu_rover_large.jpg",
@@ -99,77 +99,77 @@ export const roverCameras = [
   },
   {
     name: "Rover Up-Look Camera",
-    rovers: ["curiosity"],
+    rovers: ["perseverance "],
     cameraCode: "EDL_RUCAM",
   },
   {
     name: "Rover Down-Look Camera",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "EDL_RDCAM",
   },
   {
     name: "Descent Stage Down-Look Camera",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "EDL_DDCAM",
   },
   {
     name: "Parachute Up-Look Camera A",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "EDL_PUCAM1",
   },
   {
     name: "Parachute Up-Look Camera B",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "EDL_PUCAM2",
   },
   {
     name: "Navigation Camera - Left",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "NAVCAM_LEFT",
   },
   {
     name: "Navigation Camera - Right",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "NAVCAM_RIGHT",
   },
   {
     name: "Mast Camera Zoom - Right",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "MCZ_RIGHT",
   },
   {
     name: "Mast Camera Zoom - Left",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "MCZ_LEFT",
   },
   {
     name: "Front Hazard Avoidance Camera - Left",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "FRONT_HAZCAM_LEFT_A",
   },
   {
     name: "Front Hazard Avoidance Camera - Right",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "FRONT_HAZCAM_RIGHT_A",
   },
   {
     name: "Rear Hazard Avoidance Camera - Left",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "REAR_HAZCAM_LEFT",
   },
   {
     name: "Rear Hazard Avoidance Camera - Right",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "REAR_HAZCAM_RIGHT",
   },
   {
     name: "MEDA Skycam",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "SKYCAM",
   },
   {
     name: "SHERLOC WATSON Camera",
-    rovers: ["curiosity"],
+    rovers: ["perseverance"],
     cameraCode: "SHERLOC_WATSON",
   },
 ];
