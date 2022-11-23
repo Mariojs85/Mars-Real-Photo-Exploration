@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
-const DatePicker = ({ onSelect, value, minDate, maxDate }) => {
+const DatePicker = ({ onSelect, value }) => {
   const handleOnSelect = (e) => {
     onSelect(e.target.value);
   };
@@ -12,9 +12,7 @@ const DatePicker = ({ onSelect, value, minDate, maxDate }) => {
         type="date"
         name="duedate"
         placeholder="Due date"
-        value={value || ""}
-        min={minDate}
-        max={maxDate}
+        value={value}
         onChange={handleOnSelect}
       />
     </Form.Group>

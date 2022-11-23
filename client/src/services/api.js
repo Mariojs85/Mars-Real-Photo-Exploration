@@ -1,7 +1,6 @@
-// import axios from 'axios'
 
-const baseURL = `https://api.nasa.gov/mars-photos/api/v1/`;
-const apiKey = `hUkkfpMaQjV6dDNHBwxX2Q7nYd0R8Te9hR0o0z6l`;
+const baseURL = `https://mars-photos.herokuapp.com/api/v1`;
+//const apiKey = `hUkkfpMaQjV6dDNHBwxX2Q7nYd0R8Te9hR0o0z6l`;
 const allRovers = [`Spirit`, `Opportunity`, `Curiosity`, `Perseverance`];
 let rover = [];
 allRovers.forEach((element) => {
@@ -10,10 +9,10 @@ allRovers.forEach((element) => {
 
 // manifest Endpoint
 
-const getManifest = async () => {
+const getManifest = async (rover) => {
   try {
     const res = await fetch(
-      `${baseURL}/manifests/Curiosity?api_key=${apiKey}`
+      `${baseURL}/manifests/${rover}`
     );
     if (!res.ok) {
       throw new Error(`Error! status: ${res.status}`);
@@ -33,39 +32,25 @@ const getManifest = async () => {
       // Filtering Queries by Camera:
 // Query For Latest Photos
 
-const getPhotos = async (sol, earth_date, latest_photos) => {
+const getPhotos = async (data, rover) => {
+  const paramsStr = [];
+  Object.keys(data).forEach(k => {
+    paramsStr.push(`${k}=${data[k]}`)
+  })
+
   try {
     const result = await fetch(
-      `${baseURL}/rovers/Curiosity/photos?api_key=${apiKey}&sol=1000&camera=fhaz`
+      `${baseURL}/rovers/${rover}/photos?${paramsStr.join('&')}`
     );
     if (!result.ok) {
       throw new Error(`Error! status: ${result.status}`);
     }
     const data = await result.json();
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err);
   }
 };
 
-
-
-
 export { getManifest, getPhotos };
 
-// const instance = axios.create ({
-//     baseURL : 'https://api.nasa.gov/mars-photos/api/v1/',
-//     headers: {'Get': 'application/json'}
-//   })
-
-// async function getPhotos(rovers, camera, sol, earthDate, manifest){
-//     try{
-//         const res = await instance.get(
-//             `/photos/generate?apiKey=${apiKey}&rovers=${rovers}&camera=${camera}&sol=${sol}&earthDate=${earthDate}&manifest=${manifest}`);
-//         return res.data
-//     }
-//     catch(error){
-//         throw new Error(error)
-//     }
-// }
