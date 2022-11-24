@@ -1,11 +1,7 @@
 
 const baseURL = `https://mars-photos.herokuapp.com/api/v1`;
 //const apiKey = `hUkkfpMaQjV6dDNHBwxX2Q7nYd0R8Te9hR0o0z6l`;
-const allRovers = [`Spirit`, `Opportunity`, `Curiosity`, `Perseverance`];
-let rover = [];
-allRovers.forEach((element) => {
-  rover.push(element);
-});
+
 
 // manifest Endpoint
 
