@@ -48,5 +48,23 @@ const getPhotos = async (data, rover) => {
   }
 };
 
-export { getManifest, getPhotos };
+// Latest photo endpoint
+
+const getLatestPhotos = async (rover) => {
+  try {
+    const res = await fetch(
+      `${baseURL}/rovers/${rover}/latest_photos`
+    );
+    if (!res.ok) {
+      throw new Error(`Error! status: ${res.status}`);
+    }
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getManifest, getPhotos, getLatestPhotos };
 

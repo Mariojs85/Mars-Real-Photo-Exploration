@@ -4,7 +4,7 @@ import DatePicker from "../../components/filterBy/datePicker/datePicker";
 import SimpleCard from "../../components/simpleCard/simpleCard";
 import { Dropdown, Button } from "react-bootstrap";
 import { rovers, roverCameras } from "../../data/data";
-import { getManifest, getPhotos } from "../../services/api";
+import { getManifest, getPhotos, getLatestPhotos } from "../../services/api";
 import Spinner from "../../components/spinner/spinner";
 import PaginatedList from "../../components/paginatedList/paginatedList";
 import Image from "../../components/image/image";
@@ -12,13 +12,14 @@ import Image from "../../components/image/image";
 import "./roverPhoto.css";
 
 const Roverphoto = () => {
-  const [timeRange, setTimeRange] = useState("Earth Time");
+  const [timeRange, setTimeRange] = useState("");
   const [camera, setCamera] = useState();
   const [earthDate, setEarthDate] = useState();
   const [martianSol, setMartianSol] = useState(0);
   const [manifest, setManifest] = useState();
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [latestphotos, setLatestPhotos] = useState();
 
   const { rover } = useParams();
 
@@ -75,6 +76,15 @@ const Roverphoto = () => {
     ));
   };
 
+  const handleGetLatestPhotos = () => {
+    getLatestPhotos(rover)
+      .then((res) => {
+        setLatestPhotos(res.latest_photos.img_src);
+              })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const handleGetPhots = () => {
     const params = {};
     if (timeRange === "Earth Time") {
@@ -125,7 +135,7 @@ const Roverphoto = () => {
                   minDate={manifest?.landing_date}
                   maxDate={manifest?.max_date}
                 />
-              ) : (
+              ) : timeRange === "Martian Sol" ? (
                 <input
                   type="number"
                   onChange={handleMartianSol}
@@ -134,6 +144,8 @@ const Roverphoto = () => {
                   min={0}
                   max={manifest?.max_sol}
                 />
+              ) : (
+                timeRange
               )}
             </div>
           </div>
@@ -151,38 +163,87 @@ const Roverphoto = () => {
             </Dropdown>
           </div>
           <Button onClick={handleGetPhots}>Get Photos</Button>
+          <Button onClick={handleGetLatestPhotos}>Get Latest Photos</Button>
         </div>
         <hr style={{ borderColor: "white" }} />
         <div className="home-cards-container d-flex m-4 gap-2 justify-content-center">
           {getRover()}
           <div className="">
-            <p className="text-white mt-4 " >            
-              <img src="/Photos/Icons/spaceship.png" alt="" style={{width:"42px", marginLeft:"29px", marginRight:"15px" }} />
+            <p className="text-white mt-4 ">
+              <img
+                src="/Photos/Icons/spaceship.png"
+                alt=""
+                style={{
+                  width: "42px",
+                  marginLeft: "29px",
+                  marginRight: "15px",
+                }}
+              />
               <span className="me-2">Launch Date:</span>
-              {manifest?.launch_date} 
+              {manifest?.launch_date}
             </p>
             <p className="text-white">
-            <img src="/Photos/Icons/parachute.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
+              <img
+                src="/Photos/Icons/parachute.png"
+                alt=""
+                style={{
+                  width: "42px",
+                  marginLeft: "29px",
+                  marginRight: "15px",
+                }}
+              />
               <span className="me-2">Landing Date:</span>
               {manifest?.landing_date}
             </p>
             <p className="text-white">
-            <img src="/Photos/Icons/deadline.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
+              <img
+                src="/Photos/Icons/deadline.png"
+                alt=""
+                style={{
+                  width: "42px",
+                  marginLeft: "29px",
+                  marginRight: "15px",
+                }}
+              />
               <span className="me-2">Max Date:</span>
               {manifest?.max_date}
             </p>
             <p className="text-white">
-              <img src="/Photos/Icons/calendar.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
+              <img
+                src="/Photos/Icons/calendar.png"
+                alt=""
+                style={{
+                  width: "42px",
+                  marginLeft: "29px",
+                  marginRight: "15px",
+                }}
+              />
               <span className="me-2">Max Sol:</span>
               {manifest?.max_sol}
             </p>
             <p className="text-white">
-            <img src="/Photos//Icons/totalPhoto.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
+              <img
+                src="/Photos//Icons/totalPhoto.png"
+                alt=""
+                style={{
+                  width: "42px",
+                  marginLeft: "29px",
+                  marginRight: "15px",
+                }}
+              />
               <span className="me-2">Total Photos:</span>
               {manifest?.total_photos}
             </p>
             <p className="text-white">
-            <img src="/Photos/Icons/clipboard.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
+              <img
+                src="/Photos/Icons/clipboard.png"
+                alt=""
+                style={{
+                  width: "42px",
+                  marginLeft: "29px",
+                  marginRight: "15px",
+                }}
+              />
               <span className="me-2">Mission Status:</span>
               {manifest?.status}
             </p>
@@ -210,6 +271,27 @@ const Roverphoto = () => {
             <p className="text-white text-center">No photos found</p>
           )}
         </div>
+        {/* <div className="photo-galery-wrapper">
+          {latestphotos.length > 0 ? (
+            <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
+              {latestphotos.map((lastphoto) => (
+                <a href={lastphoto.img_src} target="_blank">
+                  <Image
+                    src={lastphoto.img_src}
+                    alt="...mars"
+                    className="photos-galery-image"
+                    width={320}
+                    height={320}
+                    phantomHeight={320}
+                    phantomWidth={320}
+                  />
+                </a>
+              ))}
+            </PaginatedList>
+          ) : (
+            <p className="text-white text-center">No photos found</p>
+          )}
+        </div> */}
       </div>
       {loading && <Spinner global />}
     </>

@@ -1,30 +1,22 @@
-.abc {
-    justify-content: space-around;
-    justify-items: center;
-    align-items: center;
-    height: max-content;
-    background-color: rgb(108, 108, 143);
-  }
-  
-  .rover-photo-time-range {
-    display: flex;
-    gap: 1rem;
-    border: 1px solid gray;
-    border-radius: 10px;
-    padding: 0.5rem;
-    align-items: center;
-  }
+.rover-photo-time-range {
+  display: flex;
+  gap: 0.6rem;
+  /* border: 1px solid gray; */
+  border-radius: 10px;
+  padding: 0.5rem;
+  align-items: center;
+}
 
-  .photo-galery-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+.photo-galery-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-  .photos-galery-image {
-    width: 320px;
-    height: 320px;
-    object-fit: cover;
-  }
+.photos-galery-image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+}

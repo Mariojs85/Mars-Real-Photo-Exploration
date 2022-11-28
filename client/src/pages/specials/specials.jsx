@@ -1,35 +1,68 @@
-import { Carousel } from "react-bootstrap";
+import { Carousel, Image } from "react-bootstrap";
+import PaginatedList from "../../components/paginatedList/paginatedList";
+import { rovers } from "../../data/data";
+// import {poze} from "../poze"
 
 const Specials = () => {
   return (
-    <div >
-      <div 
-      style={{
-        overflow: "hidden",
-        height: "90%",
-        
-        display: "flex",
-        flexDirection: "column",
-        alignItems:"center",
-        gap: "1rem",
-      }}>
+    <div className="">
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
         <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/OO5CTBBgtXs"
+          width="450"
+          height="255"
+          src="https://www.youtube.com/embed/OO5CTBBgtXs?autoplay=1&mute=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
+      </div> */}
+      {/* <div className="photo-galery">
+        {rovers.map((rover) => (
+          <Image
+            href={rover.img}
+            target="_blank"
+            img={rover.img}
+            src={rover.img}
+            alt="...mars"
+            className="photos-galery"
+            width={320}
+            height={320}
+            phantomHeight={320}
+            phantomWidth={320}
+          />
+        ))}
+      </div> */}
+      <div
+        style={{
+          overflow: "hidden",
+          height: "90%",
+
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "3rem",
+        }}
+      >
+        <div className="">
+          <iframe
+            width="450"
+            height="255"
+            src="https://www.youtube.com/embed/OO5CTBBgtXs?autoplay=1&mute=0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
       <div>
         <Carousel>
           <Carousel.Item>
-            <div style={{ width: "100%", height: "610px" }}>
+            <div >
               <img
                 src="/Photos/download.jpg"
-                alt="Girl in a jacket"
+                alt="..."
                 width="60%"
                 height="90%"
               ></img>
@@ -37,14 +70,14 @@ const Specials = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              style={{ width: "100%", height: "610px", background: "#3399FF" }}
+              
             >
               <p style={{ fontSize: "32px", fontWeight: "bold" }}>
                 Curiosity Amazing "Selfie"
               </p>
               <img
                 src="/Photos/6037_msl_banner (1).jpg"
-                alt="Girl in a jacket"
+                alt="..."
                 width="60%"
                 height="90%"
               ></img>
@@ -52,11 +85,11 @@ const Specials = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              style={{ width: "100%", height: "610px", background: "#3399FF" }}
+              
             >
               <img
                 src="/Photos/tyre size.png"
-                alt="Girl in a jacket"
+                alt="..."
                 width="60%"
                 height="90%"
               ></img>
@@ -64,11 +97,11 @@ const Specials = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              style={{ width: "100%", height: "610px", background: "#3399FF" }}
+              
             >
               <img
                 src="/Photos/Rover-Size-Comparison.png"
-                alt="Girl in a jacket"
+                alt="..."
                 width="60%"
                 height="90%"
               ></img>
@@ -76,11 +109,11 @@ const Specials = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              style={{ width: "100%", height: "610px", background: "#3399FF" }}
+              
             >
               <img
                 src="/Photos/MarsRoverhistrory.jpg"
-                alt="Girl in a jacket"
+                alt="..."
                 width="60%"
                 height="90%"
               ></img>
@@ -88,9 +121,9 @@ const Specials = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              style={{ width: "100%", height: "100%", background: "#3399FF" }}
+              
             >
-              <p style={{ fontSize: "32px", fontWeight: "bold" }}>
+              <p style={{ fontSize: "22px", fontWeight: "bold" }}>
                 Curiosity record 1.8 billion pixel photo
               </p>
               <iframe
@@ -105,7 +138,7 @@ const Specials = () => {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              style={{ width: "100%", height: "100%", background: "#3399FF" }}
+              
             >
               <p style={{ fontSize: "32px", fontWeight: "bold" }}>
                 Perseverance high resolution shots
