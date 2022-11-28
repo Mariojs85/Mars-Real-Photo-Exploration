@@ -83,7 +83,7 @@ const Roverphoto = () => {
       params.sol = martianSol;
     }
     params.camera = camera;
-    console.log(params)
+    console.log(params);
     getPhotos(params, rover)
       .then((res) => {
         setPhotos(res.photos);
@@ -155,28 +155,34 @@ const Roverphoto = () => {
         <hr style={{ borderColor: "white" }} />
         <div className="home-cards-container d-flex m-4 gap-2 justify-content-center">
           {getRover()}
-          <div>
+          <div className="">
+            <p className="text-white mt-4 " >            
+              <img src="/Photos/Icons/spaceship.png" alt="" style={{width:"42px", marginLeft:"29px", marginRight:"15px" }} />
+              <span className="me-2">Launch Date:</span>
+              {manifest?.launch_date} 
+            </p>
             <p className="text-white">
+            <img src="/Photos/Icons/parachute.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
               <span className="me-2">Landing Date:</span>
               {manifest?.landing_date}
             </p>
             <p className="text-white">
-              <span className="me-2">Launch Date:</span>
-              {manifest?.launch_date}
-            </p>
-            <p className="text-white">
+            <img src="/Photos/Icons/deadline.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
               <span className="me-2">Max Date:</span>
               {manifest?.max_date}
             </p>
             <p className="text-white">
+              <img src="/Photos/Icons/calendar.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
               <span className="me-2">Max Sol:</span>
               {manifest?.max_sol}
             </p>
             <p className="text-white">
+            <img src="/Photos//Icons/totalPhoto.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
               <span className="me-2">Total Photos:</span>
               {manifest?.total_photos}
             </p>
             <p className="text-white">
+            <img src="/Photos/Icons/clipboard.png" alt="" style={{width:"42px", marginLeft:"29px",marginRight:"15px"  }} />
               <span className="me-2">Mission Status:</span>
               {manifest?.status}
             </p>
@@ -188,15 +194,15 @@ const Roverphoto = () => {
             <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
               {photos.map((photo) => (
                 <a href={photo.img_src} target="_blank">
-                <Image
-                  src={photo.img_src}
-                  alt="...mars"
-                  className="photos-galery-image"
-                  width={320}
-                  height={320}
-                  phantomHeight={320}
-                  phantomWidth={320}
-                />
+                  <Image
+                    src={photo.img_src}
+                    alt="...mars"
+                    className="photos-galery-image"
+                    width={320}
+                    height={320}
+                    phantomHeight={320}
+                    phantomWidth={320}
+                  />
                 </a>
               ))}
             </PaginatedList>
