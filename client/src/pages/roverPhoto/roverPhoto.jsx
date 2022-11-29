@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import DatePicker from "../../components/filterBy/datePicker/datePicker";
+import DatePicker from "../../components/datePicker/datePicker";
 import SimpleCard from "../../components/simpleCard/simpleCard";
 import { Dropdown, Button } from "react-bootstrap";
 import { rovers, roverCameras } from "../../data/data";
@@ -19,7 +19,10 @@ const Roverphoto = () => {
   const [manifest, setManifest] = useState();
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
-  const [latestphotos, setLatestPhotos] = useState();
+  const [latestphotos, setLatestPhotos] = useState([]);
+  const [noPhotoMsg, setNoPhotoMsg] = useState(
+    "Select earth date or sol, to see images."
+  );
 
   const { rover } = useParams();
 
@@ -59,11 +62,11 @@ const Roverphoto = () => {
   };
 
   const getCamerasListByRover = () => {
-    const filteredList = roverCameras.filter((obj) =>
+    const filteyellowList = roverCameras.filter((obj) =>
       obj.rovers.includes(rover.toLocaleLowerCase())
     );
-    console.log(filteredList);
-    return filteredList.map((c) => (
+    console.log(filteyellowList);
+    return filteyellowList.map((c) => (
       <Dropdown.Item
         eventKey={c.cameraCode}
         key={c.cameraCode}
@@ -79,12 +82,17 @@ const Roverphoto = () => {
   const handleGetLatestPhotos = () => {
     getLatestPhotos(rover)
       .then((res) => {
-        setLatestPhotos(res.latest_photos.img_src);
-              })
+        setLatestPhotos(res.latest_photos);
+        if (res.latest_photos.length === 0) setNoPhotoMsg("No photos found");
+        else setNoPhotoMsg("");
+        setPhotos([]);
+        console.log(res);
+      })
       .catch((error) => {
         console.log(error);
       });
   };
+
   const handleGetPhots = () => {
     const params = {};
     if (timeRange === "Earth Time") {
@@ -97,6 +105,8 @@ const Roverphoto = () => {
     getPhotos(params, rover)
       .then((res) => {
         setPhotos(res.photos);
+        setLatestPhotos([]);
+        if (res.photos.length === 0) setNoPhotoMsg("No photos found");
       })
       .catch((error) => {
         console.log(error);
@@ -109,7 +119,7 @@ const Roverphoto = () => {
     <>
       <div>
         <h1 className="text-white text-center">{rover}</h1>
-        <div className="rover-photo-filters d-flex align-items-center gap-3">
+        <div className="rover-photo-filters d-flex align-items-center flex-wrap gap-3">
           <div className="rover-photo-time-range">
             <Dropdown onSelect={handleTimeRangeSelect}>
               <Dropdown.Toggle
@@ -179,8 +189,13 @@ const Roverphoto = () => {
                   marginRight: "15px",
                 }}
               />
-              <span className="me-2">Launch Date:</span>
-              {manifest?.launch_date}
+              <span
+                className="me-2"
+                style={{ color: "#97c1e7", fontWeight: "bold" }}
+              >
+                Launch Date:
+              </span>
+              <span style={{ color: "#3ff718" }}>{manifest?.launch_date}</span>
             </p>
             <p className="text-white">
               <img
@@ -192,8 +207,13 @@ const Roverphoto = () => {
                   marginRight: "15px",
                 }}
               />
-              <span className="me-2">Landing Date:</span>
-              {manifest?.landing_date}
+              <span
+                className="me-2"
+                style={{ color: "#97c1e7", fontWeight: "bold" }}
+              >
+                Landing Date:
+              </span>
+              <span style={{ color: "#3ff718" }}>{manifest?.landing_date}</span>
             </p>
             <p className="text-white">
               <img
@@ -205,8 +225,13 @@ const Roverphoto = () => {
                   marginRight: "15px",
                 }}
               />
-              <span className="me-2">Max Date:</span>
-              {manifest?.max_date}
+              <span
+                className="me-2"
+                style={{ color: "#97c1e7", fontWeight: "bold" }}
+              >
+                Max Date:
+              </span>
+              <span style={{ color: "#3ff718" }}>{manifest?.max_date}</span>
             </p>
             <p className="text-white">
               <img
@@ -218,8 +243,13 @@ const Roverphoto = () => {
                   marginRight: "15px",
                 }}
               />
-              <span className="me-2">Max Sol:</span>
-              {manifest?.max_sol}
+              <span
+                className="me-2"
+                style={{ color: "#97c1e7", fontWeight: "bold" }}
+              >
+                Max Sol:
+              </span>
+              <span style={{ color: "#3ff718" }}>{manifest?.max_sol}</span>
             </p>
             <p className="text-white">
               <img
@@ -231,8 +261,13 @@ const Roverphoto = () => {
                   marginRight: "15px",
                 }}
               />
-              <span className="me-2">Total Photos:</span>
-              {manifest?.total_photos}
+              <span
+                className="me-2"
+                style={{ color: "#97c1e7", fontWeight: "bold" }}
+              >
+                Total Photos:
+              </span>
+              <span style={{ color: "#3ff718" }}>{manifest?.total_photos}</span>
             </p>
             <p className="text-white">
               <img
@@ -244,8 +279,13 @@ const Roverphoto = () => {
                   marginRight: "15px",
                 }}
               />
-              <span className="me-2">Mission Status:</span>
-              {manifest?.status}
+              <span
+                className="me-2"
+                style={{ color: "#97c1e7", fontWeight: "bold" }}
+              >
+                Mission Status:
+              </span>
+              <span style={{ color: "#3ff718" }}>{manifest?.status}</span>
             </p>
           </div>
         </div>
@@ -253,9 +293,10 @@ const Roverphoto = () => {
         <div className="photo-galery-wrapper">
           {photos.length > 0 ? (
             <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
-              {photos.map((photo) => (
+              {photos.map((photo, id) => (
                 <a href={photo.img_src} target="_blank">
                   <Image
+                    key={id}
                     src={photo.img_src}
                     alt="...mars"
                     className="photos-galery-image"
@@ -268,11 +309,11 @@ const Roverphoto = () => {
               ))}
             </PaginatedList>
           ) : (
-            <p className="text-white text-center">No photos found</p>
+            <p className="text-white text-center">{noPhotoMsg}</p>
           )}
         </div>
-        {/* <div className="photo-galery-wrapper">
-          {latestphotos.length > 0 ? (
+        <div className="photo-galery-wrapper">
+          {latestphotos ? (
             <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
               {latestphotos.map((lastphoto) => (
                 <a href={lastphoto.img_src} target="_blank">
@@ -289,9 +330,9 @@ const Roverphoto = () => {
               ))}
             </PaginatedList>
           ) : (
-            <p className="text-white text-center">No photos found</p>
+            <p>Error</p>
           )}
-        </div> */}
+        </div>
       </div>
       {loading && <Spinner global />}
     </>

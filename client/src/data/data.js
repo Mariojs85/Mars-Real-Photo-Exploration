@@ -44,7 +44,7 @@ export const rovers = [
   },
   {
     name: "Perseverance",
-    img: "/Photos/perseverance-rover-16340120843x2.avif",
+    img: "/Photos/persevera.avif",
     missionTime: [persevaranceTimer],
 
     description: `\n•Goals:\n Explore a geologically diverse landing site 

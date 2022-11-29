@@ -22,7 +22,7 @@ const Home = () => {
       </body> */}
       <h2 className="text-white text-center">Select a rover to see Mars</h2>
       <div className="home-cards-container m-4 gap-2 d-flex flex-wrap justify-content-between">
-        {rovers.map((rover,) => (
+        {rovers.map((rover, id) => (
           <SimpleCard
             name={rover.name}
             id={rover.name}
