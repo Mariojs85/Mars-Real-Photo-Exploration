@@ -21,7 +21,7 @@ const Roverphoto = () => {
   const [photos, setPhotos] = useState([]);
   const [latestphotos, setLatestPhotos] = useState([]);
   const [noPhotoMsg, setNoPhotoMsg] = useState(
-    "Select earth date or sol, to see images."
+    "Select Time Range or Latest Photos, to see images."
   );
 
   const { rover } = useParams();
@@ -31,6 +31,7 @@ const Roverphoto = () => {
     getManifest(rover)
       .then((res) => {
         setManifest(res.photo_manifest);
+        
         setEarthDate(res.photo_manifest?.max_date);
         setLoading(false);
       })

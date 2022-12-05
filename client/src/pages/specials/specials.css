@@ -1,4 +1,10 @@
-/* .carusel-wraper{
-    
-    object-fit: cover;
-} */
+
+#btnSpecials{
+    background-color: #222529;
+    color: yellowgreen;
+    /* padding: % 5%; */
+}
+ .carusell{
+    display: flex;
+    object-fit: contain;
+ }
