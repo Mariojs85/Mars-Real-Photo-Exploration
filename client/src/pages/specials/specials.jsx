@@ -1,6 +1,5 @@
-import SimpleSlider from "../../components/displayImage";
 import DisplayImageComponent from "../../components/displayImage";
-// import DemoCarousel from "../../components/carousel";
+
 import "./specials.css";
 
 const Specials = () => {
@@ -12,7 +11,6 @@ const Specials = () => {
   // return
   //   // alert("I'm an alert")
   // // )
-
   return (
     <div
       style={{
@@ -37,7 +35,7 @@ const Specials = () => {
         <iframe
           width="490px"
           height="355"
-          src="https://www.youtube.com/embed/OO5CTBBgtXs?autoplay=1&mute=0"
+          src="https://www.youtube.com/embed/OO5CTBBgtXs?hl=en&cc_lang_pref=en&cc=1&autoplay=1&mute=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -63,8 +61,8 @@ const Specials = () => {
       </div>
       <div>
         {/* <h4 class="text-danger text-center">Photo gallery</h4> */}
-
-        <p id="btnSpecials">{}
+        <p id="btnSpecials">
+          {}
           <DisplayImageComponent />
         </p>
       </div>

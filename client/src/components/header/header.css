@@ -1,23 +1,21 @@
 .custom-nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: rgba(255,255,255,.55);
-    text-decoration: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-    font-weight: bolder;
-    font-size: larger;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  font-weight: bolder;
+  font-size: larger;
 }
 
-.abc{
-    background-color: rgb(141, 33, 169);
-    
-}
-.header-logo{
-    text-align: center;
-    /* border-radius: 50%; */
-    padding: 0.2rem;
+.header-logo {
+  text-align: center;
+  /* border-radius: 50%; */
+  padding: 0.2rem;
 }
 
-.link{
-    
+.header-title {
+  width: 12rem;
+  margin-left: 22px;
 }

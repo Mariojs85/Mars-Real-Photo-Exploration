@@ -11,16 +11,20 @@ const Header = () => {
           <div className="navbar-container d-flex align-items-center  ">
             <div className="d-flex align-items-center  ">
               <div>
-                <img
-                  alt=""
-                  src="/Photos/images.png"
-                  width="50"
-                  height="40"
-                  // className=" header-logo d-inline-block align-top"
-                  className=" header-logo "
-                />
+                <Link to="/">
+                  <img
+                    alt=""
+                    src="/Photos/images.png"
+                    width="50"
+                    height="40"
+                    // className=" header-logo d-inline-block align-top"
+                    className=" header-logo "
+                  />
+                </Link>
               </div>
-              <div>Amazing Mars Rovers</div>
+              <Link style={{ color: "white", textDecoration: "none", }} to="/">
+                <div className="header-title"> Amazing Mars Rovers</div>
+              </Link>
             </div>
           </div>
         </Navbar.Brand>

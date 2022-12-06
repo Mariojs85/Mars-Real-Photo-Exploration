@@ -96,12 +96,13 @@ const Roverphoto = () => {
 
   const handleGetPhots = () => {
     const params = {};
+    params.camera = camera;
     if (timeRange === "Earth Time") {
       params.earth_date = earthDate;
     } else if (timeRange === "Martian Sol") {
       params.sol = martianSol;
     }
-    params.camera = camera;
+    else(alert("Choose a time range and a camera first"))
     console.log(params);
     getPhotos(params, rover)
       .then((res) => {
@@ -131,11 +132,10 @@ const Roverphoto = () => {
                 {timeRange || "Time Range"}
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item eventKey="Earth Time">Earth Time</Dropdown.Item>
-                <Dropdown.Item eventKey="Martian Sol">
-                  Martian Sol
-                </Dropdown.Item>
+              <Dropdown.Menu >
+                <Dropdown.Item  eventKey="Earth Time">Earth Time</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item  eventKey="Martian Sol">Martian Sol</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <div>
@@ -163,7 +163,7 @@ const Roverphoto = () => {
           <div>
             <Dropdown onSelect={handleSelectCamera}>
               <Dropdown.Toggle
-                variant="success"
+                variant="warning"
                 id="dropdown-camera"
                 disabled={timeRange === undefined}
               >
@@ -173,8 +173,8 @@ const Roverphoto = () => {
               <Dropdown.Menu>{getCamerasListByRover()}</Dropdown.Menu>
             </Dropdown>
           </div>
-          <Button onClick={handleGetPhots}>Get Photos</Button>
-          <Button onClick={handleGetLatestPhotos}>Get Latest Photos</Button>
+          <Button variant="outline-info" onClick={handleGetPhots}>Get Photos</Button>
+          <Button variant="danger" onClick={handleGetLatestPhotos}>Get Latest Photos</Button>
         </div>
         <hr style={{ borderColor: "white" }} />
         <div className="home-cards-container d-flex m-4 gap-2 justify-content-center">
