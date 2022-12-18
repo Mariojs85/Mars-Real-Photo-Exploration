@@ -1,15 +1,24 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./header.css";
 
 const Header = () => {
+  const [date, setDate]= useState()
+  useEffect(( )=> {
+    let sec =setInterval(() => {
+      let date  = new Date();
+      setDate(date.toString().substring(0,date.toString().indexOf("GMT")))
+    },1000)
+  })
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container className="header-container">
-        <Navbar.Brand href="#home">
-          <div className="navbar-container d-flex align-items-center  ">
-            <div className="d-flex align-items-center  ">
+        <Navbar.Brand>
+          <div>
+            <div  className="d-flex align-items-center  ">
               <div>
                 <Link to="/">
                   <img
@@ -24,7 +33,8 @@ const Header = () => {
               </div>
               <Link style={{ color: "white", textDecoration: "none", }} to="/">
                 <div className="header-title"> Amazing Mars Rovers</div>
-              </Link>
+              </Link>              
+              <div className="time-div">{date}</div>
             </div>
           </div>
         </Navbar.Brand>

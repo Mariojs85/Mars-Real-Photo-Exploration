@@ -4,7 +4,6 @@ const baseURL = `https://mars-photos.herokuapp.com/api/v1`;
 
 
 // manifest Endpoint
-
 const getManifest = async (rover) => {
   try {
     const res = await fetch(
@@ -20,14 +19,12 @@ const getManifest = async (rover) => {
     console.log(err);
   }
 };
-
 // Photo Endpoint
 //////////////////////////////////
 // Queries by Martian sol:
 // Querying by Earth date:
       // Filtering Queries by Camera:
 // Query For Latest Photos
-
 const getPhotos = async (data, rover) => {
   const paramsStr = [];
   Object.keys(data).forEach(k => {

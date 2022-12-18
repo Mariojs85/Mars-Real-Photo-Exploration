@@ -18,4 +18,17 @@
 .header-title {
   width: 12rem;
   margin-left: 22px;
+
+}
+.navbar-brand{
+  width: 732px;
+  display: flex;
+  
+  
+}
+.time-div{
+  margin-left: 49%;
+  color: rgb(240, 193, 136);
+  font-weight: bolder;
+  font-size: 1.1rem;
 }
