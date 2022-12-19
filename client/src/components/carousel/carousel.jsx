@@ -1,6 +1,6 @@
-import { Image } from "react-bootstrap";
+// import { Image } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./carousel.css"
 
 

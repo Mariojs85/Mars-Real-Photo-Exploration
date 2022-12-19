@@ -39,7 +39,7 @@ const Roverphoto = () => {
         console.log(err);
         setLoading(false);
       });
-  }, []);
+  }, [rover]);
 
   const getRover = () => {
     const res = rovers.find((obj) => obj.name === rover);

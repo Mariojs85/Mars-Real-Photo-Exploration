@@ -1,16 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./header.css";
 
 const Header = () => {
   const [date, setDate]= useState()
-  useEffect(( )=> {
+  useEffect(()=> {
     let sec =setInterval(() => {
       let date  = new Date();
-      setDate(date.toString().substring(0,date.toString().indexOf("GMT")))
+      setDate(date.toString(sec).substring(0,date.toString().indexOf("GMT")))
     },1000)
   })
   return (
@@ -18,7 +18,7 @@ const Header = () => {
       <Container className="header-container">
         <Navbar.Brand>
           <div>
-            <div  className="d-flex align-items-center  ">
+            <div  className="d-flex align-items-center position-relative  ">
               <div>
                 <Link to="/">
                   <img
@@ -34,7 +34,7 @@ const Header = () => {
               <Link style={{ color: "white", textDecoration: "none", }} to="/">
                 <div className="header-title"> Amazing Mars Rovers</div>
               </Link>              
-              <div className="time-div">{date}</div>
+              <div className="time-div ">{date}</div>
             </div>
           </div>
         </Navbar.Brand>
@@ -45,19 +45,11 @@ const Header = () => {
               <Link to="/" className="custom-nav-link">
                 Home
               </Link>
-              {/* <Link to="/roverPhoto" className="custom-nav-link">
-                Rover Photos
-              </Link> */}
+              
               <Link to="/specials" className="custom-nav-link">
                 Specials
               </Link>
-              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                          </NavDropdown> */}
+              
             </Nav>
           </Navbar.Collapse>
         </div>

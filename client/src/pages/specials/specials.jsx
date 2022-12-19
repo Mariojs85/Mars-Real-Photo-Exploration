@@ -1,4 +1,4 @@
-import DisplayImageComponent from "../../components/displayImage";
+import DisplayImageComponent from "../../components/Preloader/displayImage";
 
 import "./specials.css";
 
@@ -24,6 +24,7 @@ const Specials = () => {
       <div>
         <h4 class="text-danger text-center">Spirit</h4>{" "}
         <iframe
+        title="1"
           src="https://mars.nasa.gov/gltf_embed/24883"
           width="490px"
           height="355"
@@ -44,6 +45,7 @@ const Specials = () => {
       <div>
         <h4 class="text-danger text-center">Opportunity</h4>
         <iframe
+        title="2"
           src="https://mars.nasa.gov/gltf_embed/24883"
           width="490px"
           height="355"
@@ -53,6 +55,7 @@ const Specials = () => {
       <div>
         <h4 class="text-danger text-center">Curiosity</h4>
         <iframe
+        title="3"
           src="https://mars.nasa.gov/gltf_embed/24584"
           width="490px"
           height="355"
@@ -69,6 +72,7 @@ const Specials = () => {
       <div>
         <h4 class="text-danger text-center">Perseverance</h4>
         <iframe
+        title="4"
           src="https://mars.nasa.gov/gltf_embed/25042"
           width="490px"
           height="355"

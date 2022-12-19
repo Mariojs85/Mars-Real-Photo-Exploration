@@ -19,16 +19,43 @@
   width: 12rem;
   margin-left: 22px;
 
+  display: block;
+  /* padding: 0.5rem 1rem; */
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  font-weight: bolder;
+  font-size: larger;
+
+
+  
 }
-.navbar-brand{
+.navbar-brand {
   width: 732px;
   display: flex;
-  
-  
 }
-.time-div{
-  margin-left: 49%;
+@media only screen and (min-width: 700px) {
+  .time-div {
+    margin-left: 49%;
+    color: rgb(240, 193, 136);
+    font-weight: bolder;
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (max-width: 929px) {
+  .time-div {
+    margin-left: 9%;
+    color: rgb(240, 136, 216);
+    font-weight: bolder;
+    font-size: 1.1rem;
+  }
+}
+
+/* .time-div{
+  
   color: rgb(240, 193, 136);
   font-weight: bolder;
   font-size: 1.1rem;
-}
+  
+  
+} */

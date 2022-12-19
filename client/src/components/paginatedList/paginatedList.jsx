@@ -23,7 +23,7 @@ const PaginatedList = ({
       );
       setPageContent(temp);
     }
-  }, [pageNo, children]);
+  }, [pageNo, children, pageSize, total]);
 
   const handlePrevPage = () => {
     if (pageNo > 0) setPageNo((state) => state - 1);

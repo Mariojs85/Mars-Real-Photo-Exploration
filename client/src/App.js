@@ -5,6 +5,7 @@ import Header from "./components/header/header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Specials from "./pages/specials/specials";
 import Roverphoto from "./pages/roverPhoto/roverPhoto";
+import { SplashPhoto } from "./components/Preloader/splashPhoto";
 
 function App() {
   return (
@@ -14,7 +15,16 @@ function App() {
         <main>
           <hr style={{ borderColor: "white" }} />
           <Routes>
-            <Route index path="/" element={<Home />} />
+            <Route
+              index
+              path="/"
+              element={
+                <SplashPhoto>
+                  <Home />
+                </SplashPhoto>
+              }
+            />
+
             <Route path="/roverPhoto/:rover" element={<Roverphoto />} />
             <Route path="specials" element={<Specials />} />
           </Routes>
