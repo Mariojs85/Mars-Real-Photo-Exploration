@@ -21,7 +21,7 @@ const Roverphoto = () => {
   const [photos, setPhotos] = useState([]);
   const [latestphotos, setLatestPhotos] = useState([]);
   const [noPhotoMsg, setNoPhotoMsg] = useState(
-    "Select Time Range or Latest Photos, to see images."
+    "Select Time Range and Rover Camera or Latest Photos, to see images."
   );
 
   const { rover } = useParams();
@@ -31,7 +31,7 @@ const Roverphoto = () => {
     getManifest(rover)
       .then((res) => {
         setManifest(res.photo_manifest);
-        
+
         setEarthDate(res.photo_manifest?.max_date);
         setLoading(false);
       })
@@ -85,7 +85,7 @@ const Roverphoto = () => {
       .then((res) => {
         setLatestPhotos(res.latest_photos);
         if (res.latest_photos.length === 0) setNoPhotoMsg("No photos found");
-        else setNoPhotoMsg("");
+        else setNoPhotoMsg("Here are the Latest Photos taken on Mars");
         setPhotos([]);
         console.log(res);
       })
@@ -101,14 +101,16 @@ const Roverphoto = () => {
       params.earth_date = earthDate;
     } else if (timeRange === "Martian Sol") {
       params.sol = martianSol;
-    }
-    else(alert("Choose a time range and a camera first"))
+    } else alert("Please choose a Time Range and a Camera first");
     console.log(params);
-    getPhotos(params, rover)
+    getPhotos(params, rover, )
       .then((res) => {
         setPhotos(res.photos);
         setLatestPhotos([]);
-        if (res.photos.length === 0) setNoPhotoMsg("No photos found");
+        if (timeRange && !camera) alert("Please choose a Rover Camera from the Dropdown");
+        else if (timeRange && camera && res.photos.length === 0) setNoPhotoMsg("No photos found for that Time Range with selected camera");
+        else if (photos !==null) setNoPhotoMsg(timeRange)
+        
       })
       .catch((error) => {
         console.log(error);
@@ -132,10 +134,12 @@ const Roverphoto = () => {
                 {timeRange || "Time Range"}
               </Dropdown.Toggle>
 
-              <Dropdown.Menu >
-                <Dropdown.Item  eventKey="Earth Time">Earth Time</Dropdown.Item>
+              <Dropdown.Menu>
+                <Dropdown.Item eventKey="Earth Time">Earth Time</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item  eventKey="Martian Sol">Martian Sol</Dropdown.Item>
+                <Dropdown.Item eventKey="Martian Sol">
+                  Martian Sol
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <div>
@@ -165,7 +169,7 @@ const Roverphoto = () => {
               <Dropdown.Toggle
                 variant="warning"
                 id="dropdown-camera"
-                disabled={timeRange === undefined}
+                disabled={!timeRange}
               >
                 {camera || "Rover Camera"}
               </Dropdown.Toggle>
@@ -173,8 +177,12 @@ const Roverphoto = () => {
               <Dropdown.Menu>{getCamerasListByRover()}</Dropdown.Menu>
             </Dropdown>
           </div>
-          <Button variant="outline-info" onClick={handleGetPhots}>Get Photos</Button>
-          <Button variant="danger" onClick={handleGetLatestPhotos}>Get Latest Photos</Button>
+          <Button variant="outline-info" onClick={handleGetPhots}>
+            Get Photos
+          </Button>
+          <Button variant="danger" onClick={handleGetLatestPhotos}>
+            Get Latest Photos
+          </Button>
         </div>
         <hr style={{ borderColor: "white" }} />
         <div className="home-cards-container d-flex m-4 gap-2 justify-content-center">
@@ -294,8 +302,9 @@ const Roverphoto = () => {
         <div className="photo-galery-wrapper">
           {photos.length > 0 ? (
             <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
-              {photos.map((photo, id) => (
-                <a href={photo.img_src} target="_blank">
+              {
+              photos.map((photo, id) => (
+                <a href={photo.img_src} target="_blank" rel="noreferrer">
                   <Image
                     key={id}
                     src={photo.img_src}
@@ -317,7 +326,7 @@ const Roverphoto = () => {
           {latestphotos ? (
             <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
               {latestphotos.map((lastphoto) => (
-                <a href={lastphoto.img_src} target="_blank">
+                <a href={lastphoto.img_src} target="_blank" rel="noreferrer">
                   <Image
                     src={lastphoto.img_src}
                     alt="...mars"

@@ -96,6 +96,7 @@ export const roverCameras = [
   {
     name: "Miniature Thermal Emission Spectrometer (Mini-TES)",
     rovers: ["opportunity", "spirit"],
+    cameraCode: "MINITES",
   },
   {
     name: "Rover Up-Look Camera",
