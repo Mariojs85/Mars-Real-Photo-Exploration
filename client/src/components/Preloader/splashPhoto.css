@@ -1,38 +1,27 @@
-.intro-obj{
-    display:flex;
-    justify-items: center;
-    justify-content: center;
-    position: relative;
-    
-    
+.intro-obj {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.intro-photo{
-    width: 100vw;
-    align-items: center;
-    height: 86vh;
-
-    
-  
-  
-}
-    
-    
-    
-
-.intro-text{
-    position: absolute;
-    color: rgb(231, 77, 77);
-    text-align: center;
+.intro-photo {
+  width: 100vw;
+  align-items: center;
+  height: 86vh;
 }
 
-.btn2{
-    position: absolute;
-    margin-top: 29%;
-    border-radius: 10%;
-    background-color: rgb(158, 227, 202);
-    color: rgb(170, 21, 127);
-    font-weight:800;
-   
+.intro-text {
+  position: absolute;
+  color: rgb(231, 77, 77);
+  text-align: center;
+}
 
+.btn2 {
+  position: absolute;
+  margin-top: 29%;
+  border-radius: 10%;
+  background-color: rgb(158, 227, 202);
+  color: rgb(170, 21, 127);
+  font-weight: 800;
 }

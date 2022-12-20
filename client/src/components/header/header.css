@@ -36,18 +36,24 @@
 }
 @media only screen and (min-width: 700px) {
   .time-div {
+    display: flex;
     margin-left: 49%;
     color: rgb(240, 193, 136);
     font-weight: bolder;
     font-size: 1.1rem;
+    /* flex-wrap: wrap; */
+    
+
   }
 }
 @media only screen and (max-width: 929px) {
   .time-div {
-    margin-left: 9%;
+    display: flex;
+    margin-left: 12%;
     color: rgb(240, 136, 216);
     font-weight: bolder;
     font-size: 1.1rem;
+    flex-wrap: wrap;
   }
 }
 

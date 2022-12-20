@@ -29,6 +29,7 @@ const Specials = () => {
           width="490px"
           height="355"
           frameborder="0"
+          
         />
       </div>
       <div style={{ position: "relative" }}>
@@ -39,7 +40,7 @@ const Specials = () => {
           src="https://www.youtube.com/embed/OO5CTBBgtXs?hl=en&cc_lang_pref=en&cc=1&autoplay=1&mute=0"
           title="YouTube video player"
           frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
         ></iframe>
       </div>
       <div>
