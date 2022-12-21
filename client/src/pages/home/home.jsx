@@ -12,7 +12,10 @@ const Home = () => {
   
   
   new Promise((resolve) => resolve);
-    const {isShown} = useSplash();
+    const {isShown} = useSplash({      
+    });
+
+
     const navigate = useNavigate();
 
 
@@ -28,7 +31,7 @@ const Home = () => {
       <h2 className="text-white text-center">Select a rover to see Mars</h2>
       <div className="home-cards-container  m-4 gap-2 d-flex flex-wrap justify-content-between">
         {rovers.map((rover, id) => (
-          <SimpleCard
+          <SimpleCard          
             name={rover.name}
             id={rover.name}
             img={rover.img}

@@ -85,8 +85,9 @@ const Roverphoto = () => {
       .then((res) => {
         setLatestPhotos(res.latest_photos);
         if (res.latest_photos.length === 0) setNoPhotoMsg("No photos found");
-        else setNoPhotoMsg("Here are the Latest Photos taken on Mars");
+        else setNoPhotoMsg("Here are the Latest Photos taken on Mars"+":"+" "+ earthDate +" "+"/"+" "+ manifest.max_sol);
         setPhotos([]);
+       
         console.log(res);
       })
       .catch((error) => {
@@ -103,14 +104,24 @@ const Roverphoto = () => {
       params.sol = martianSol;
     } else alert("Please choose a Time Range and a Camera first");
     console.log(params);
-    getPhotos(params, rover, )
+    getPhotos(params, rover)
       .then((res) => {
         setPhotos(res.photos);
         setLatestPhotos([]);
-        if (timeRange && !camera) alert("Please choose a Rover Camera from the Dropdown");
-        else if (timeRange && camera && res.photos.length === 0) setNoPhotoMsg("No photos found for that Time Range with selected camera");
-        else if (photos !==null) setNoPhotoMsg(timeRange)
-        
+        if (timeRange && !camera) {
+          alert("Please choose a Rover Camera from the Dropdown");
+        } else if (timeRange && camera && res.photos.length === 0) {
+          setNoPhotoMsg(
+            "No photos found for that Time Range with selected camera"
+          );
+        } else if (res.photos.length > 0) 
+        {
+          if (martianSol)
+            setNoPhotoMsg(timeRange + " " + martianSol + " " + camera);
+          else if(earthDate) setNoPhotoMsg(timeRange  + " " + earthDate + " " + camera);
+        }
+
+        // setNoPhotoMsg( timeRange +" "+ timeRange.value +" "+ camera);
       })
       .catch((error) => {
         console.log(error);
@@ -299,28 +310,24 @@ const Roverphoto = () => {
           </div>
         </div>
         <hr style={{ borderColor: "white" }} />
+        <p className="text-white text-center">{noPhotoMsg}</p>
         <div className="photo-galery-wrapper">
-          {photos.length > 0 ? (
-            <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
-              {
-              photos.map((photo, id) => (
-                <a href={photo.img_src} target="_blank" rel="noreferrer">
-                  <Image
-                    key={id}
-                    src={photo.img_src}
-                    alt="...mars"
-                    className="photos-galery-image"
-                    width={320}
-                    height={320}
-                    phantomHeight={320}
-                    phantomWidth={320}
-                  />
-                </a>
-              ))}
-            </PaginatedList>
-          ) : (
-            <p className="text-white text-center">{noPhotoMsg}</p>
-          )}
+          <PaginatedList listContainerClassName="d-flex gap-3 flex-wrap justify-content-center align-items-center m-3">
+            {photos.map((photo, id) => (
+              <a href={photo.img_src} target="_blank" rel="noreferrer">
+                <Image
+                  key={id}
+                  src={photo.img_src}
+                  alt="...mars"
+                  className="photos-galery-image"
+                  width={320}
+                  height={320}
+                  phantomHeight={320}
+                  phantomWidth={320}
+                />
+              </a>
+            ))}
+          </PaginatedList>
         </div>
         <div className="photo-galery-wrapper">
           {latestphotos ? (
